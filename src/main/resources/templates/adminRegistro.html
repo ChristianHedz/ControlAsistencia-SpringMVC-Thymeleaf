@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Empleado - Calva Inc</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="#">Calva Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/login">Administrador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/empleados">Empleados</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5 text-white">
+    <h2>Registro de Empleado</h2>
+    <form th:action="@{/empleados/registrar}" method="post" th:object="${empleado}">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre"  th:field="*{nombre}" >
+            <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="alert alert-danger"></div>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}" >
+            <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="alert alert-danger"></div>
+        </div>
+        <div class="form-group">
+            <label for="estatus">Estatus:</label>
+            <select class="form-control" id="estatus" name="estatus">
+                <option value="ACTIVO">Activo</option>
+                <option value="INACTIVO">Inactivo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="departamento">Departamento:</label>
+            <select class="form-control" id="departamento" name="departamento">
+                <option value="Contabilidad">Contabilidad</option>
+                <option value="Sistemas">Sistemas</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="rol">Rol:</label>
+            <select class="form-control" id="rol" name="rol">
+                <option value="Operativo">Operativo</option>
+                <option value="Administrativo">Administrativo</option>
+            </select>
+        </div>
+            <div class="form-group" id="userPassFields" style="display: none;">
+                <label for="usuario">Usuario:</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" th:field="*{usuario}">
+                <div th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}" class="alert alert-danger"></div>
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" class="form-control" id="contrasena" name="contrasena" th:field="*{contrasena}">
+                <div th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}" class="alert alert-danger"></div>
+            </div>
+        <div class="form-group">
+            <label for="horaEntrada">Hora de Entrada:</label>
+            <input type="time" class="form-control" id="horaEntrada" name="horaEntrada" required>
+        </div>
+        <div class="form-group">
+            <label for="horaSalida">Hora de Salida:</label>
+            <input type="time" class="form-control" id="horaSalida" name="horaSalida" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+
+</div>
+<script>
+document.getElementById('rol').addEventListener('change', function() {
+    var selectedRole = this.value;
+    var userPassFields = document.getElementById('userPassFields');
+    if (selectedRole === 'Administrativo') {
+        userPassFields.style.display = 'block';
+    } else {
+        userPassFields.style.display = 'none';
+    }
+});
+document.getElementById('departamento').addEventListener('change', function() {
+    var selectedDepartment = this.value;
+    var userPassFields = document.getElementById('userPassFields');
+    if (selectedDepartment === 'Contabilidad') {
+        userPassFields.style.display = 'block';
+    } else {
+        userPassFields.style.display = 'none';
+    }
+});
+</script>
+
+</body>
+</html>
