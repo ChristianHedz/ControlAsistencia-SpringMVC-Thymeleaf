@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio - Calva Inc</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-black shadow">
+    <a class="navbar-brand" href="#">Calva Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/login">Administrador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/empleados">Empleados</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-center mt-5 text-white">Bienvenido a Calva Inc</h1>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="#" class="btn btn-lg btn-primary mr-2">Contador</a>
+            <a href="/admin/login" class="btn btn-lg btn-secondary mr-2">Administrador</a>
+            <a href="/empleados" class="btn btn-lg btn-success">Empleados</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
