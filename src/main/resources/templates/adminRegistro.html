@@ -40,16 +40,14 @@
             <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="alert alert-danger"></div>
         </div>
         <div class="form-group">
-            <label for="apellido">Apellido:</label>
+            <label for="apellido">Apellidos:</label>
             <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}" >
             <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="alert alert-danger"></div>
         </div>
         <div class="form-group">
-            <label for="estatus">Estatus:</label>
-            <select class="form-control" id="estatus" name="estatus">
-                <option value="ACTIVO">Activo</option>
-                <option value="INACTIVO">Inactivo</option>
-            </select>
+            <label for="apellido">Sueldo:</label>
+            <input type="number" class="form-control" id="sueldo" name="sueldo" th:field="*{sueldo}" >
+            <div th:if="${#fields.hasErrors('sueldo')}" th:errors="*{sueldo}" class="alert alert-danger"></div>
         </div>
         <div class="form-group">
             <label for="departamento">Departamento:</label>

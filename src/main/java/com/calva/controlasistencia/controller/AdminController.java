@@ -28,6 +28,7 @@ public class AdminController {
         return "adminLogin";
     }
 
+
     @GetMapping("/registro")
     public String registro(Model model) {
         model.addAttribute("empleado", new EmpleadoDto());
@@ -44,7 +45,14 @@ public class AdminController {
 
         if(empleado.isPresent() && empleado.get().getRol().getNombre().equals("Administrativo")) {
             model.addAttribute("empleado", new EmpleadoDto());
-            return "adminRegistro";
+            model.addAttribute("administrativo", "Has accedido como administrador");
+            return "redirect:/admin/registro";
+        }
+
+        if(empleado.isPresent() && empleado.get().getDepartamento().getNombre().equals("Contabilidad")) {
+            model.addAttribute("empleado", new EmpleadoDto());
+            model.addAttribute("administrativo", "Has accedido como contador");
+            return "redirect:/empleados";
         }
 
         model.addAttribute("loginError", "Usuario o contraseña incorrectos");
