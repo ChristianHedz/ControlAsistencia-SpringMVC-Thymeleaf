@@ -16,10 +16,10 @@ public class Asistencia {
     @ManyToOne
     @JoinColumn(name = "empleado_id", nullable = false)
     private Empleado empleado;
-
     private LocalDate fecha;
     private LocalTime horaEntrada;
     private LocalTime horaSalida;
+    private Long asistencia = 1L;
 
     @Enumerated(EnumType.STRING)
     private TipoRegistro tipoRegistro;
